@@ -54,4 +54,13 @@ public interface BagInterface<T>
      * @return An array of all the entries in the bag
      */
     public T[] toArray();
+
+    /*
+     * ┌───────────────────────────────────────────────────┐
+     * │                 To be implemented                 │
+     * └───────────────────────────────────────────────────┘
+     */
+    public T[] union();
+    public T[] intersection();
+    public T[] difference();
 }
