@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class BagDriver
 {
     public static void main(String[] args)
@@ -24,10 +26,13 @@ public class BagDriver
        ResizableArrayBag<String> bag12 = bag1.intersection(bag2);
        ResizableArrayBag<String> bag21 = bag2.intersection(bag1);
 
-       System.out.println("bag1.intersection.tostring: " + bag1.intersection(bag2).toString() + '\n');
-       System.out.println("Bag12: " + bag12.toString() + '\n');
-       System.out.println("bag2.intersection.tostring: " + bag2.intersection(bag1).toString()+'\n');
-       System.out.println("Bag21: " + bag21.toString() + '\n');
+       System.out.print('\n');
+       System.out.println("Bag1:"+ Arrays.toString(bag1.toArray()));
+       System.out.println("Bag2:" + Arrays.toString(bag2.toArray()));
+       System.out.println("bag1.toString: " + Arrays.toString(bag1.intersection(bag2).toArray()));
+       System.out.println("Bag12: " + Arrays.toString(bag12.toArray()));
+       System.out.println("bag2.toString: " + Arrays.toString(bag2.intersection(bag1).toArray()));
+       System.out.println("Bag21: " + Arrays.toString(bag21.toArray()));
 
     }
 }

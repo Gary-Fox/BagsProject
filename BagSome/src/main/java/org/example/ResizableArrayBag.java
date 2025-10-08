@@ -100,6 +100,10 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     {
         checkIntegrity();
         int counter = 0;
+        if (anEntry == null)
+        {
+            return counter;
+        }
         for (int i = 0; i < numberOfEntries; i++)
         {
             if (anEntry.equals(bag[i]))
@@ -167,9 +171,8 @@ public class ResizableArrayBag<T> implements BagInterface<T>
          {
             searchVar = bagB[i];
             //Figuring out the least frequency
-             varFreq = Math.min(this.getFrequencyOf(searchVar),bagIn.getFrequencyOf(searchVar));
-             while (varFreq > 0)
-                {
+                varFreq = Math.min(this.getFrequencyOf(searchVar),bagIn.getFrequencyOf(searchVar));
+                while (varFreq > 0) {
                     //assert false;
                     //Adding the member of interest as many times as the least frequency
                     result.add(searchVar);
