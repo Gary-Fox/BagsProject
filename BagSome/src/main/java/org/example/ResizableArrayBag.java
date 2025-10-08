@@ -189,6 +189,10 @@ public class ResizableArrayBag<T> implements BagInterface<T>
                     //Needs to be iterative based on Frequencyof
                     varFound = true;
                     varFreq--;
+                    if(i > 0)
+                    {
+                        i--;
+                    }
 
                 }
                 if (varFound)

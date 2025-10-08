@@ -62,6 +62,9 @@ public class BagDriver
        //Double checking initial bags
        System.out.println("bagIntB:"+ Arrays.toString(bagIntB.toArray()));
         System.out.println("bagIntA:" + Arrays.toString(bagIntA.toArray()));
+        int out1 = bagIntA.getCurrentSize();
+        int out2 = bagIntB.getCurrentSize();
+        System.out.println(out2 + " " + out1);
 //       System.out.println("Bag12: " + Arrays.toString(bag12.toArray()));
 //              System.out.println("Bag21: " + Arrays.toString(bag21.toArray()));
 
