@@ -141,12 +141,44 @@ public class ResizableArrayBag<T> implements BagInterface<T>
      */
     public T[] union()
     {
+
         return null;
     }
-    public T[] intersection()
+
+    /**Method that takes two bags and returns a bag comprised of the intersection of those two bags
+     * @param bagIn The bag we want to intersect with the bag that called this method.
+     * */
+    public ResizableArrayBag<T> intersection(ResizableArrayBag<T> bagIn )
     {
-        return null;
+        checkIntegrity();
+        T[] bagB = bagIn.bag;
+        T searchVar;
+        ResizableArrayBag<T> result = new ResizableArrayBag<>();
+        int varFreq;
+        //Checking for empty/null bags
+         if (this.isEmpty() || bagIn.isEmpty())
+         {
+             return result;
+         }
+         //Searching the content of bagIn as an array
+        //Could "optimize" by checking which bag has a shorter array.
+        //Doesn't change it asymptotically
+         for(int i = 0; i < bagB.length; i++)
+         {
+            searchVar = bagB[i];
+            //Figuring out the least frequency
+             varFreq = Math.min(this.getFrequencyOf(searchVar),bagIn.getFrequencyOf(searchVar));
+             while (varFreq > 0)
+                {
+                    //assert false;
+                    //Adding the member of interest as many times as the least frequency
+                    result.add(searchVar);
+                    varFreq--;
+                }
+         }
+        return result;
     }
+
     public T[] difference()
     {
         return null;
