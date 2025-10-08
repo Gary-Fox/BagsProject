@@ -155,7 +155,16 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public ResizableArrayBag<T> intersection(ResizableArrayBag<T> bagIn )
     {
         checkIntegrity();
-        T[] bagB = bagIn.bag;
+        ResizableArrayBag<T> bagA = new ResizableArrayBag<>();
+        ResizableArrayBag<T> bagB = new ResizableArrayBag<>();
+        int dummy1 = this.numberOfEntries;
+        int dummy2 = bagIn.numberOfEntries;
+        //copying bags into dummy bags
+        bagA.bag = this.toArray();
+        bagA.numberOfEntries = dummy1;
+        bagB.bag = bagIn.toArray();
+        bagB.numberOfEntries = dummy2;
+        //T[] searchArray  = bagB.bag;
         T searchVar;
         ResizableArrayBag<T> result = new ResizableArrayBag<>();
         int varFreq;
@@ -165,19 +174,35 @@ public class ResizableArrayBag<T> implements BagInterface<T>
              return result;
          }
          //Searching the content of bagIn as an array
-        //Could "optimize" by checking which bag has a shorter array.
-        //Doesn't change it asymptotically
-         for(int i = 0; i < bagB.length; i++)
+         for(int i = 0; i < bagB.numberOfEntries; i++)
          {
-            searchVar = bagB[i];
-            //Figuring out the least frequency
+             if (bagB.bag[i] != null)
+             {
+                 boolean varFound = false;
+                searchVar = bagB.bag[i];
+                //Figuring out the least frequency
                 varFreq = Math.min(this.getFrequencyOf(searchVar),bagIn.getFrequencyOf(searchVar));
-                while (varFreq > 0) {
-                    //assert false;
+                while (varFreq > 0)
+                {
                     //Adding the member of interest as many times as the least frequency
                     result.add(searchVar);
+                    //Needs to be iterative based on Frequencyof
+                    varFound = true;
                     varFreq--;
+
                 }
+                if (varFound)
+                {
+                    while (0 < bagA.getFrequencyOf(searchVar))
+                    {
+                        bagA.remove(searchVar);
+                    }
+                    while(0 < bagB.getFrequencyOf(searchVar))
+                    {
+                        bagB.remove(searchVar);
+                    }
+                }
+            }
          }
         return result;
     }
