@@ -61,6 +61,6 @@ public interface BagInterface<T>
      * └───────────────────────────────────────────────────┘
      */
     public T[] union();
-    public T[] intersection();
+    public BagInterface<T> intersection(BagInterface<T> In);
     public T[] difference();
 }

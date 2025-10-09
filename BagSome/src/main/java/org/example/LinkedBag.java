@@ -1,6 +1,7 @@
 package org.example;
 
-public class LinkedBag<T> implements BagInterface<T> {
+public class LinkedBag<T> implements BagInterface<T>
+{
     private Node firstNode;
     private int numberOfEntries;
 
@@ -118,5 +119,46 @@ public class LinkedBag<T> implements BagInterface<T> {
         private Node getNextNode() {
             return next;
         }
+    }
+
+    public T[] union()
+    {
+        return null;
+    }
+
+    public BagInterface<T> intersection(BagInterface<T> bagIn)
+    {
+        T[] bagA = this.toArray();
+        T[] bagB = bagIn.toArray();
+        ResizableArrayBag<T> result = new ResizableArrayBag<>();
+        //T searchVar;
+        if (this.isEmpty() || bagIn.isEmpty())
+        {
+            return result;
+        }
+
+        for (int i = 0; i < bagB.length; i++)
+        {
+            if (bagB[i] != null)
+            {
+                for (int j = 0; j < bagA.length; j++)
+                {
+                    if(bagB[i] == bagA[j] && bagA[j] != null)
+                    {
+                        result.add(bagB[i]);
+                        bagB[i] = null;
+                        bagA[j] = null;
+                    }
+                }
+            }
+        }
+
+
+        return result;
+    }
+
+    public T[] difference()
+    {
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.management.BadAttributeValueExpException;
 import java.util.Arrays;
 
 public class ResizableArrayBag<T> implements BagInterface<T>
@@ -67,7 +68,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public T remove()
     {
         checkIntegrity();
-        return removeEntry(numberOfEntries);
+        return removeEntry(numberOfEntries - 1);
     }
 
     /** Removes one occurrence of a given entry from the bag, if possible
@@ -100,6 +101,10 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     {
         checkIntegrity();
         int counter = 0;
+        if (anEntry == null)
+        {
+            return counter;
+        }
         for (int i = 0; i < numberOfEntries; i++)
         {
             if (anEntry.equals(bag[i]))
@@ -123,15 +128,13 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     /** Gathers all bag entries and converts them into an array
      * @return An array of all the entries in the bag
      */
-    public T[] toArray()
-    {
-        @SuppressWarnings("unchecked")
-        T[] result = (T[]) new Object[numberOfEntries];
-        for(int index = 0; index < numberOfEntries; index++)
-        {
-            result[index] = bag[index];
-        }
-        return result;
+
+public T[] toArray()
+{
+    @SuppressWarnings("unchecked")
+    T[] result = (T[]) java.lang.reflect.Array.newInstance( bag.getClass().getComponentType(), numberOfEntries);
+    System.arraycopy(bag, 0, result, 0, numberOfEntries);
+    return result;
     }
 
     /*
@@ -141,12 +144,72 @@ public class ResizableArrayBag<T> implements BagInterface<T>
      */
     public T[] union()
     {
+
         return null;
     }
-    public T[] intersection()
+
+    /**Method that takes two bags and returns a bag comprised of the intersection of those two bags
+     * @param bagIn The bag we want to intersect with the bag that called this method.
+     * */
+    public BagInterface<T> intersection(BagInterface<T> bagIn )
     {
-        return null;
+        checkIntegrity();
+        ResizableArrayBag<T> bagA = new ResizableArrayBag<>();
+        ResizableArrayBag<T> bagB = new ResizableArrayBag<>();
+        int dummy1 = this.numberOfEntries;
+        int dummy2 = bagIn.toArray().length;
+        //copying bags into dummy bags
+        bagA.bag = this.toArray();
+        bagA.numberOfEntries = dummy1;
+        bagB.bag = bagIn.toArray();
+        bagB.numberOfEntries = dummy2;
+        //T[] searchArray  = bagB.bag;
+        T searchVar;
+        ResizableArrayBag<T> result = new ResizableArrayBag<>();
+        int varFreq;
+        //Checking for empty/null bags
+         if (this.isEmpty() || bagIn.isEmpty())
+         {
+             return result;
+         }
+         //Searching the content of bagIn as an array
+         for(int i = 0; i < bagB.numberOfEntries; i++)
+         {
+             if (bagB.bag[i] != null)
+             {
+                 boolean varFound = false;
+                searchVar = bagB.bag[i];
+                //Figuring out the least frequency
+                varFreq = Math.min(this.getFrequencyOf(searchVar),bagIn.getFrequencyOf(searchVar));
+                while (varFreq > 0)
+                {
+                    //Adding the member of interest as many times as the least frequency
+                    result.add(searchVar);
+                    //Needs to be iterative based on Frequencyof
+                    varFound = true;
+                    varFreq--;
+                    if(i > 0)
+                    {
+                        i--;
+                    }
+
+                }
+                if (varFound)
+                {
+                    while (0 < bagA.getFrequencyOf(searchVar))
+                    {
+                        bagA.remove(searchVar);
+                    }
+                    while(0 < bagB.getFrequencyOf(searchVar))
+                    {
+                        bagB.remove(searchVar);
+                    }
+                }
+            }
+         }
+        return result;
     }
+
     public T[] difference()
     {
         return null;
