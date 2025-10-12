@@ -1,6 +1,7 @@
 package org.example.tests;
 
 import org.example.BagInterface;
+import org.example.LinkedBag;
 import org.example.ResizableArrayBag;
 
 import java.util.Arrays;
@@ -73,6 +74,32 @@ public class ResizableArrayBagTest
         System.out.println(out2 + " " + out1);
         //   System.out.println("Bag12: " + Arrays.toString(bag12));
         //  System.out.println("Bag21: " + Arrays.toString(bag21));
+
+        //IDE already catches bad bag mixing
+        //System.out.println("Mixed bag: " + Arrays.toString(bagIntA.intersection(bag2).toArray()));
+        BagInterface<Character> BagOne = new LinkedBag<Character>();
+        BagInterface<Character> BagTwo = new ResizableArrayBag<Character>();
+
+        BagOne.add('1');
+        BagOne.add('2');
+        BagOne.add('2');
+        BagOne.add('A');
+        BagOne.add('a');
+        BagOne.add('@');
+
+        BagTwo.add('$');
+        BagTwo.add('$');
+        BagTwo.add('1');
+        BagTwo.add('2');
+        BagTwo.add('2');
+        BagTwo.add('A');
+        BagTwo.add('3');
+        BagTwo.add('4');
+
+        System.out.println("Intersect linked/Array bag [AB]: " + Arrays.toString(BagOne.intersection(BagTwo).toArray()));
+        System.out.println("Intersect linked/Array bag [BA]: " + Arrays.toString(BagTwo.intersection(BagOne).toArray()));
+
+
     }
 
 }

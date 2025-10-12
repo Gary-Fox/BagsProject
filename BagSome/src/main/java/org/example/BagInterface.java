@@ -60,7 +60,7 @@ public interface BagInterface<T>
      * │                 To be implemented                 │
      * └───────────────────────────────────────────────────┘
      */
-    public T[] union();
+    public BagInterface<T> union();
     public BagInterface<T> intersection(BagInterface<T> In);
-    public T[] difference();
+    public BagInterface<T> difference();
 }

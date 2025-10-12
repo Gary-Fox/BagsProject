@@ -11,13 +11,13 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     private int numberOfEntries;
     private boolean integrityOK = false;
 
-    /**Constructor
+    /**Constructor, sets the size of the arraybag to the default capacity
      * */
     public ResizableArrayBag()
     {
         this(DEFAULT_CAPACITY);
     }
-    /**constructor with known capacity
+    /**Constructor, sets the size of the arraybag to a specified quantity
      * */
     public ResizableArrayBag(int capacity)
     {
@@ -115,7 +115,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         return counter;
     }
 
-    /** tests whether th bag contains (an instance of) a given entry
+    /** Tests whether th bag contains (an instance of) a given entry
      * @param anEntry the entry to find
      * @return True if the bag contains anEntry, false otherwise
      */
@@ -142,7 +142,7 @@ public T[] toArray()
      * │                 To be implemented                 │
      * └───────────────────────────────────────────────────┘
      */
-    public T[] union()
+    public BagInterface<T> union()
     {
 
         return null;
@@ -192,7 +192,6 @@ public T[] toArray()
                     {
                         i--;
                     }
-
                 }
                 if (varFound)
                 {
@@ -210,7 +209,7 @@ public T[] toArray()
         return result;
     }
 
-    public T[] difference()
+    public BagInterface<T> difference()
     {
         return null;
     }
