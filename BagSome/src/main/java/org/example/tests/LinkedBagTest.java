@@ -77,6 +77,13 @@ public class LinkedBagTest
 
         System.out.println("Intersection[AB]: " + Arrays.toString(bagA.intersection(bagB).toArray()));
         System.out.println("Intersection[BA]: " + Arrays.toString(bagB.intersection(bagA).toArray()));
-        System.out.println("Intersecting ");
+
+        BagInterface<String> unionBag = bag1.union(bag2);
+
+        System.out.println("Union: " + Arrays.toString(bag1.union(bag2).toArray()));
+        System.out.println("Union var: " + Arrays.toString(unionBag.toArray()));
+
+        System.out.println("Union empty bags: " + Arrays.toString(emptyBagA.union(emptyBagB).toArray()));
+        System.out.println("Union 1 empty bag: " + Arrays.toString(emptyBag1.union(bag2).toArray()));
     }
 }

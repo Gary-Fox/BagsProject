@@ -34,9 +34,7 @@ public class ResizableArrayBagTest
         System.out.println("Bag1:" + Arrays.toString(bag1.toArray()));
         System.out.println("Bag2:" + Arrays.toString(bag2.toArray()));
         System.out.println("bag1.toString: " + Arrays.toString(bag1.intersection(bag2).toArray()));
-        //System.out.println("Bag12: " + Arrays.toString(bag12));
         System.out.println("bag2.toString: " + Arrays.toString(bag2.intersection(bag1).toArray()));
-        //  System.out.println("Bag21: " + Arrays.toString(bag21));
 
         //Int bags
         ResizableArrayBag<Integer> bagIntA = new ResizableArrayBag<>();
@@ -61,22 +59,18 @@ public class ResizableArrayBagTest
         System.out.print('\n');
         System.out.println("bagIntB:" + Arrays.toString(bagIntB.toArray()));
         System.out.println("bagIntA:" + Arrays.toString(bagIntA.toArray()));
-        //System.out.println("IntersectBA: " + Arrays.toString(bagIntB.intersection(bagIntA)));
         System.out.println("IntersesctBA: " + Arrays.toString(bagIntB.intersection(bagIntA).toArray()));
         System.out.println("IntersesctAB: " + Arrays.toString(bagIntA.intersection(bagIntB).toArray()));
-        //System.out.println("IntersectAB: " + Arrays.toString(bagIntA.intersection(bagIntB)));
         //Double checking initial bags
         System.out.println("bagIntB:" + Arrays.toString(bagIntB.toArray()));
         System.out.println("bagIntA:" + Arrays.toString(bagIntA.toArray()));
 
+        //Ensuring bags are unaltered
         int out1 = bagIntA.getCurrentSize();
         int out2 = bagIntB.getCurrentSize();
         System.out.println(out2 + " " + out1);
-        //   System.out.println("Bag12: " + Arrays.toString(bag12));
-        //  System.out.println("Bag21: " + Arrays.toString(bag21));
 
-        //IDE already catches bad bag mixing
-        //System.out.println("Mixed bag: " + Arrays.toString(bagIntA.intersection(bag2).toArray()));
+        //Checking if linked and array bags can interact
         BagInterface<Character> BagOne = new LinkedBag<Character>();
         BagInterface<Character> BagTwo = new ResizableArrayBag<Character>();
 
@@ -98,6 +92,16 @@ public class ResizableArrayBagTest
 
         System.out.println("Intersect linked/Array bag [AB]: " + Arrays.toString(BagOne.intersection(BagTwo).toArray()));
         System.out.println("Intersect linked/Array bag [BA]: " + Arrays.toString(BagTwo.intersection(BagOne).toArray()));
+
+        //Testing Union
+        BagInterface<String> unionBag = bag1.union(bag2);
+
+        System.out.println("Union: " + Arrays.toString(bag1.union(bag2).toArray()));
+        System.out.println("Union var: " + Arrays.toString(unionBag.toArray()));
+
+        System.out.println("Union mixedbags(AB): " + Arrays.toString(BagTwo.union(BagOne).toArray()));
+        System.out.println("Union mixedbags(BA): " + Arrays.toString(BagOne.union(BagTwo).toArray()));
+
 
 
     }

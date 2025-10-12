@@ -178,12 +178,23 @@ public class LinkedBag<T> implements BagInterface<T>
     }
 
     /** Creates and returns a bag comprised of the union of our two bags
-     * @param bagIn the bag we want to union with our current bag object
+     * @param addBag the bag we want to union with our current bag object
      * @return A bag containing the union of our current bag and bagIn
      */
-    public BagInterface<T> union()
+    public BagInterface<T> union(BagInterface<T> addBag)
     {
-        return null;
+        T[] bagA = this.toArray();
+        T[] bagB = addBag.toArray();
+
+        BagInterface<T> unifyList = new LinkedBag<>();
+
+        for (int i = 0; i < bagA.length; i++) {
+            unifyList.add(bagA[i]);
+        }
+        for (int j = 0; j < bagB.length; j++) {
+            unifyList.add(bagB[j]);
+        }
+        return unifyList;
     }
 
     /** Creates and returns a bag comprised of the intersection of two bags

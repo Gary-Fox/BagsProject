@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.management.BadAttributeValueExpException;
 import java.util.Arrays;
 
 public class ResizableArrayBag<T> implements BagInterface<T>
@@ -142,10 +141,20 @@ public T[] toArray()
      * │                 To be implemented                 │
      * └───────────────────────────────────────────────────┘
      */
-    public BagInterface<T> union()
+    public BagInterface<T> union(BagInterface<T> addBag)
     {
+        T[] bagA = this.toArray();
+        T[] bagB = addBag.toArray();
 
-        return null;
+        BagInterface<T> unifyList = new ResizableArrayBag<>();
+
+        for (int i = 0; i < bagA.length; i++) {
+            unifyList.add(bagA[i]);
+        }
+        for (int j = 0; j < bagB.length; j++) {
+            unifyList.add(bagB[j]);
+        }
+        return  unifyList;
     }
 
     /**Method that takes two bags and returns a bag comprised of the intersection of those two bags
