@@ -237,8 +237,30 @@ public class LinkedBag<T> implements BagInterface<T>
      * @param bagIn the bag we want to subtract from our current bag object
      * @return A bag containing the difference between our bags
      */
-    public BagInterface<T> difference()
+    public BagInterface<T> difference(BagInterface<T> bagIn)
     {
-        return null;
+        T[] bagA = this.toArray();
+        T[] bagB = bagIn.toArray();
+
+        java.util.ArrayList<T> resultList = new java.util.ArrayList<>();
+        java.util.Collections.addAll(resultList, bagA);
+
+        for (T otherItem : bagB) {
+            if (otherItem == null) continue;
+            boolean removed = false;
+            for (int k = 0; k < resultList.size() && !removed; k++) {
+                T candidate = resultList.get(k);
+                if (candidate != null && otherItem.equals(candidate)) {
+                    resultList.remove(k);
+                    removed = true;
+                }
+            }
+        }
+
+        BagInterface<T> result = new ResizableArrayBag<>();
+        for (T element : resultList) {
+            result.add(element);
+        }
+        return result;
     }
 }

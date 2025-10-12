@@ -12,6 +12,9 @@ public class ResizableArrayBagTest
     {
         ResizableArrayBag<String> bag1 = new ResizableArrayBag<>();
         ResizableArrayBag<String> bag2 = new ResizableArrayBag<>();
+        LinkedBag<String> emptyBag1 = new LinkedBag<>();
+        ResizableArrayBag<String> emptyBag2 = new ResizableArrayBag<>();
+
 
         bag1.add("Alpha");
         bag1.add("Charlie");
@@ -101,6 +104,19 @@ public class ResizableArrayBagTest
 
         System.out.println("Union mixedbags(AB): " + Arrays.toString(BagTwo.union(BagOne).toArray()));
         System.out.println("Union mixedbags(BA): " + Arrays.toString(BagOne.union(BagTwo).toArray()));
+
+        //Testing Difference method
+        System.out.println("Bag1: " + Arrays.toString(bag1.toArray()));
+        System.out.println("Bag2: " + Arrays.toString(bag2.toArray()));
+        System.out.println("Difference[12]: " + Arrays.toString(bag1.difference(bag2).toArray()));
+        System.out.println("Difference[21]: " + Arrays.toString(bag2.difference(bag1).toArray()));
+        System.out.println("Bag1: " + Arrays.toString(bag1.toArray()));
+        System.out.println("Bag2: " + Arrays.toString(bag2.toArray()));
+        //Empty bag tests
+        System.out.println("Bag1: " + Arrays.toString(bag1.toArray()));
+        System.out.println("Difference[1 - (empty)]: " + Arrays.toString(bag1.difference(emptyBag1).toArray()));
+        System.out.println("Difference[(empty) - 1]: " + Arrays.toString(emptyBag2.difference(bag1).toArray()));
+        System.out.println("Difference[(empty) - (empty)]: " + Arrays.toString(emptyBag2.difference(emptyBag1).toArray()));
 
 
 

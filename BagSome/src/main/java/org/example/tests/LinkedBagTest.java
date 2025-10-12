@@ -85,5 +85,18 @@ public class LinkedBagTest
 
         System.out.println("Union empty bags: " + Arrays.toString(emptyBagA.union(emptyBagB).toArray()));
         System.out.println("Union 1 empty bag: " + Arrays.toString(emptyBag1.union(bag2).toArray()));
+
+        //Testing Difference method
+        System.out.println("BagA: " + Arrays.toString(bagB.toArray()));
+        System.out.println("BagA: " + Arrays.toString(bagA.toArray()));
+        System.out.println("Difference[BA]: " + Arrays.toString(bagB.difference(bagA).toArray()));
+        System.out.println("Difference[BA]: " + Arrays.toString(bagA.difference(bagB).toArray()));
+        System.out.println("BagA: " + Arrays.toString(bagB.toArray()));
+        System.out.println("BagA: " + Arrays.toString(bagA.toArray()));
+        //Empty bag tests
+        System.out.println("Bag1: " + Arrays.toString(bag1.toArray()));
+        System.out.println("Difference[1 - (empty)]: " + Arrays.toString(bag1.difference(emptyBag1).toArray()));
+        System.out.println("Difference[(empty) - 1]: " + Arrays.toString(emptyBag2.difference(bag1).toArray()));
+        System.out.println("Difference[(empty) - (empty)]: " + Arrays.toString(emptyBag2.difference(emptyBag1).toArray()));
     }
 }
