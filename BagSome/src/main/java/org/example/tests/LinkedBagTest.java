@@ -1,8 +1,10 @@
 package org.example.tests;
 
-import org.example.LinkedBag;
-import org.example.*;
 import java.util.Arrays;
+
+import org.example.BagInterface;
+import org.example.LinkedBag;
+import org.example.ResizableArrayBag;
 
 public class LinkedBagTest
 {

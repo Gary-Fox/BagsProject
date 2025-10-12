@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.management.BadAttributeValueExpException;
 import java.util.Arrays;
 
 public class ResizableArrayBag<T> implements BagInterface<T>
@@ -210,10 +209,29 @@ public T[] toArray()
         return result;
     }
 
-    public T[] difference()
+    @Override
+    public BagInterface<T> difference(BagInterface<T> bagIn)
     {
-        return null;
-    }
+        checkIntegrity();
+
+        ResizableArrayBag<T> result = new ResizableArrayBag<>(Math.max(this.numberOfEntries, 25));
+        for (int i = 0; i < this.numberOfEntries; i++) {
+            result.add(bag[i]);
+        }
+
+        T[] otherArray = bagIn.toArray();
+        for (T other : otherArray) {
+            if (other == null) continue;
+
+            int idx = result.getIndexOf(other);
+            if (idx >= 0) {
+                result.removeEntry(idx);
+            }
+        }
+
+        return result;
+    }   
+
 
   /*
    * ┌───────────────────────────────────────────────────┐
