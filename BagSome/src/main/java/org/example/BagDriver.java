@@ -60,9 +60,9 @@ public class BagDriver
         System.out.println("bag1 n bag2: " + Arrays.toString(intsectBag12.toArray()));
         System.out.println("bag2 n bag1: " + Arrays.toString(intsectBag21.toArray()));
         System.out.println("bag12 n bag2: " + Arrays.toString(unionBag12.intersection(aBag2).toArray()));
-        System.out.println("(bag12 n bag2) n bag1" + Arrays.toString(aBag1.intersection(unionBag12.intersection(aBag2)).toArray()));
-        System.out.println("[Linked]bag3 n [Array]Emptybag" + Arrays.toString(lBag3.intersection(emptyArray).toArray()));
-        System.out.println("[Linked]Emptybag n [Array]Emptybag" + Arrays.toString(emptyLinked.intersection(emptyArray).toArray()));
+        System.out.println("(bag12 n bag2) n bag1: " + Arrays.toString(aBag1.intersection(unionBag12.intersection(aBag2)).toArray()));
+        System.out.println("[Linked]bag3 n [Array]Emptybag: " + Arrays.toString(lBag3.intersection(emptyArray).toArray()));
+        System.out.println("[Linked]Emptybag n [Array]Emptybag: " + Arrays.toString(emptyLinked.intersection(emptyArray).toArray()));
 
         System.out.print('\n');
 

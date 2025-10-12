@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.tests.LinkedBagTest;
+
 public class LinkedBag<T> implements BagInterface<T>
 {
     private Node firstNode;
@@ -205,7 +207,7 @@ public class LinkedBag<T> implements BagInterface<T>
     {
         T[] bagA = this.toArray();
         T[] bagB = bagIn.toArray();
-        ResizableArrayBag<T> result = new ResizableArrayBag<>();
+        LinkedBag<T> result = new LinkedBag<>();
         //T searchVar;
         if (this.isEmpty() || bagIn.isEmpty())
         {
