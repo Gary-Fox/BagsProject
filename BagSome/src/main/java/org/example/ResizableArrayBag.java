@@ -136,10 +136,11 @@ public T[] toArray()
     return result;
     }
 
-    /*
-     * ┌───────────────────────────────────────────────────┐
-     * │                 To be implemented                 │
-     * └───────────────────────────────────────────────────┘
+
+
+    /** Creates and returns a bag comprised of the union of our two bags
+     * @param addBag the bag we want to union with our current bag object
+     * @return A bag containing the union of our current bag and bagIn
      */
     public BagInterface<T> union(BagInterface<T> addBag)
     {
@@ -218,6 +219,11 @@ public T[] toArray()
         return result;
     }
 
+    /** Creates and returns a bag comprised of the difference of two bags
+     *  The current bag object minus the bagIn
+     * @param bagIn the bag we want to subtract from our current bag object
+     * @return A bag containing the difference between our bags
+     */
     public BagInterface<T> difference(BagInterface<T> bagIn)
     {
         checkIntegrity();
@@ -226,6 +232,7 @@ public T[] toArray()
         for (int i = 0; i < this.numberOfEntries; i++) {
             result.add(bag[i]);
         }
+
 
         T[] otherArray = bagIn.toArray();
         for (T other : otherArray) {

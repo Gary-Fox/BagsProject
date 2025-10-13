@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.example","l":"BagDriver"},{"p":"org.example","l":"BagInterface"},{"p":"org.example","l":"LinkedBag"},{"p":"org.example.tests","l":"LinkedBagTest"},{"p":"org.example","l":"ResizableArrayBag"},{"p":"org.example.tests","l":"ResizableArrayBagTest"}];updateSearchResults();
